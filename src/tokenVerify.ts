@@ -1,9 +1,11 @@
+import { NextFunction, Request, RequestHandler, Response } from "express";
+
 const cookieParser = require('cookie-parser');
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
 const SECRET = process.env.MONGO_PASS
 
-function isAuthenticated(req: any, res: any, next: any) {
+function isAuthenticated(req: Request, res: Response, next: NextFunction) {
     cookieParser()(req, res, async () => {
       const token = req.cookies['token'];
       try {
@@ -15,7 +17,7 @@ function isAuthenticated(req: any, res: any, next: any) {
     });
 }
 
-function loginRedirect(req: any, res: any, next: any) {
+function loginRedirect(req: Request, res: Response, next: NextFunction) {
   cookieParser()(req, res, async () => {
     const token = req.cookies['token'];
     try {
@@ -27,7 +29,7 @@ function loginRedirect(req: any, res: any, next: any) {
   });
 }
 
-async function getUserType(req: any, res: any) {
+async function getUserType(req: Request, res: Response) {
     let userType
     await cookieParser()(req, res, async () => {
         const token = req.cookies['token'];

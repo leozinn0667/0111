@@ -5,16 +5,18 @@ const path = require('path')
 const router = express.Router()
 
 
-router.get('/principal', isAuthenticated, (req: any, res: Response)=> {
-    res.render('principal')
+router.get('/principal', isAuthenticated, async (req: Request, res: Response)=> {
+    const userType = await getUserType(req, res)
+    res.render((path.resolve(__dirname, '..', '..', 'protected', 'users', userType , 'html', 'principal')));
 })
 
-router.get('/relevantes', isAuthenticated, async (req: any, res: Response)=> {
+// Retorna o html do usuário logado
+router.get('/relevantes', isAuthenticated, async (req: Request, res: Response)=> {
     const userType = await getUserType(req, res)
     res.render((path.resolve(__dirname, '..', '..', 'protected', 'users', userType , 'html', 'relevantes')));
 })
 
-router.get('/escolhas', isAuthenticated, async (req: any, res: Response)=> {
+router.get('/escolhas', isAuthenticated, async (req: Request, res: Response)=> {
     const userType = await getUserType(req, res)
     res.render((path.resolve(__dirname, '..', '..', 'protected', 'users', userType , 'html','escolhas')));
 })

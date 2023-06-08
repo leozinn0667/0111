@@ -3,27 +3,22 @@ const path = require('path')
 const mongoose = require('mongoose')
 const {loginRedirect} = require('./tokenVerify')
 require('dotenv').config();
+
 const app = express();
-
-
+const serverURL = process.env.SERVER_URL || "localhost";
+const port = process.env.PORT || 3000;
 
 const files = require('./routes/files')
 const pages = require('./routes/pages')
 const scripts = require('./routes/scripts')
 const auth  = require('./routes/auth')
 
-const serverURL = process.env.SERVER_URL || "localhost";
-
-const port = process.env.PORT || 3000;
-
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
 app.use(express.static(path.join(__dirname, '..', 'public')));
 app.set('views', path.join(__dirname, '..', 'views'));
 
-
 // Routes
-
 app.use('/files', files)
 app.use('/pages', pages)
 app.use('/scripts', scripts)
@@ -36,7 +31,6 @@ app.get('/', (req: Request, res: Response)=> {
 app.get('/login', loginRedirect,(req: Request, res: Response)=> {
     res.render('login')
 })
-
 
 app.use(function(req, res, next) {
     res.status(404)

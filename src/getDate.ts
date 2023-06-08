@@ -10,7 +10,7 @@ function getDate() {
 
     let dataFormatada = hora + ':' + minuto + ' - ' + dia + '/' + mes + '/' + ano;
 
-    function padZero(numero: any) {
+    function padZero(numero: number) {
         return numero < 10 ? '0' + numero : numero;
     }
     return `${dataFormatada} (UTC-3)`

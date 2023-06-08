@@ -1,4 +1,4 @@
-import express, { Request, Response } from 'express'
+import express, { NextFunction, Request, Response } from 'express'
 import { getDate } from '../getDate'
 import { listUsers } from '../listUsers';
 const jwt = require('jsonwebtoken')
@@ -16,7 +16,7 @@ router.use(express.json())
 router.use(bodyParser.urlencoded({ extended: false }));
 router.use(bodyParser.json());
 
-router.post('/login', async (req: any, res: any, next: any) => {
+router.post('/login', async (req: Request, res: Response, next: NextFunction) => {
     const { username, password } = req.body
 
     // validations 
@@ -60,7 +60,7 @@ router.post('/login', async (req: any, res: any, next: any) => {
 
 })
 
-router.get('/logout', async (req: any, res: any, next: any) => {
+router.get('/logout', async (req: Request, res: Response, next: NextFunction) => {
     res.clearCookie('token');
     res.redirect('/')
 });
@@ -114,5 +114,14 @@ router.post('/register', async (req: Request, res: Response) => {
 
 })
 
+router.get('/userlist', async (req: Request, res: Response) => {
+    let userlist: any[] = []
+    const usuarios = await User.find();
+    usuarios.forEach((usuario: { username: string; lastLogin: Date; }) => {
+      userlist.push({ username: usuario.username, lastLogin: usuario.lastLogin });
+    });    
+    
+    res.send(userlist)
+});
 
 module.exports = router

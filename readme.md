@@ -1,22 +1,26 @@
 
 # Projeto 0111
 ```bash
-  💎 for a special person
-
+  💎 for my girl
 ```
 
 ## Simples e romântico
-Trabalho simples, consolidando habilidades e fundamentos do Front-End e [...] *Mostrar pro mundo o tanto. O tanto que te quero e o tanto que eu te amo* [...]
+Trabalho usando back-end com Node.js, aprendendo e [...] *Mostrar pro mundo o tanto. O tanto que te quero e o tanto que eu te amo* [...]
 
 ## Deploy
--> https://leozinn0667.github.io/0111/
+Branches:
+main(c/ back-end) -> https://main0111.onrender.com/
+og(s/ back-end) -> https://og0111.vercel.app/
 
-## Framework?
-Este projeto foi feito com apenas HTML, CSS e JavaScript(para dar um charme) puro. Não achei necessário usar nenhum framework, principalmente porque o HTML não precisa ficar em constante atualização durante o uso da página. 
-Além disso, achei problemas com a integridade de permissões de uso de JS em navegadores no iOS, por isso, evitei usar JS e outros serviços mais complexos.
+## Estrutura
+Este é um projeto Node.js que implementa um sistema de login utilizando TypeScript, Express, JSON Web Tokens (JWT), bcrypt e NoSQL (MongoDB). O objetivo deste projeto é fornecer uma estrutura básica para autenticação de usuários em uma aplicação web utilizando essas tecnologias.
 
-## Branches
-Pretendo aprofundar ainda este projeto com um back-end bem planejado e completo. As branches serão divididas dependendo da profundidade do back-end, por exemplo, posso criar um sistema de login simples em uma branch, e em outra, fazer outro sistema de login mais aprofundado, com tecnologias diferentes e criptografia. A main ficará para a parte simples e usual, não pretendo fazer mais alterações na main após finalizar o trabalho.
-
-## Back-end
-Em desenvolvimento na branch -> feature/backend
+## node dependencies
+bcrypt
+body-parser
+cookie-parser
+dotenv
+ejs
+express
+jsonwebtoken
+mongoose
